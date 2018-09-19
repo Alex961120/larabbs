@@ -27,6 +27,7 @@
     </script>
 
 @stop
+
 @section('content')
 
 <div class="container">
