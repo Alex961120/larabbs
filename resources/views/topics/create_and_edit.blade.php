@@ -33,7 +33,7 @@
 <div class="container">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
-            
+
             <div class="panel-body">
                 <h2 class="text-center">
                     <i class="glyphicon glyphicon-edit"></i> Topic /
@@ -70,7 +70,7 @@
                         <select class="form-control" name="category_id" required>
                             <option value="" hidden disabled="" selected>请选择分类</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ $topic->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
