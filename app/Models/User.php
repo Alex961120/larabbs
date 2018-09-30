@@ -55,7 +55,12 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Reply::class);
     }
 
-    public function mar
+    public function markAsRead()
+    {
+        $this->notifications_count = 0;
+        $this->save();
+        $this->unreadNotifications();
+    }
 
     // Rest omitted for brevity
 
