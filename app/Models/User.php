@@ -57,7 +57,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function markAsRead()
     {
-        $this->notifications_count = 0;
+        $this->notification_count = 0;
         $this->save();
         $this->unreadNotifications();
     }
