@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
                 $user->avatar = $faker->randomElement($avatars);
             });
 
-        $user_array = $users->makeVisible(['password','remember_token'])->toArray();
+        $user_array = $users->makeVisible(['password', 'remember_token'])->toArray();
 
         // 插入到数据库中
         User::insert($user_array);
@@ -46,5 +46,12 @@ class UsersTableSeeder extends Seeder
         $user->email = '805119233@qq.com';
         $user->avatar = 'http://larabbs.test/uploads/images/avatar/201809/07/1_1536332714_opej7n7VmI.jpg';
         $user->save();
+        // 初始化用户角色，将 1 号用户指派为『站长』
+        $user->assignRole('Founder');
+
+        // 将 2 号用户指派为『管理员』
+        $user = User::find(2);
+        $user->assignRole('Maintainer');
+
     }
 }
