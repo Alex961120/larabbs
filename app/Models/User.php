@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements JWTSubject
 {
+    use Traits\ActiveUserHelper;
     use HasRoles;
 
     use Notifiable {
