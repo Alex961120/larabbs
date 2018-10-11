@@ -58,7 +58,8 @@ class AuthorizationsController extends Controller
                 break;
         }
 
-        return $this->response->array(['token' => $user->id]);
+        $token = Auth::guard('api')->fromUser($user);
+        return $this->respondWithToken($token)->setStatusCode(201);
     }
 
     public function store(AuthorizationRequest $request)
@@ -74,12 +75,7 @@ class AuthorizationsController extends Controller
         if (!$token = \Auth::guard('api')->attempt($credentials)) {
             return $this->response->errorUnauthorized('用户名或密码错误');
         }
-
-        return $this->response->array([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
-        ])->setStatusCode(201);
+        return $this->respondWithToken($token)->setStatusCode(201);
     }
 
     protected function respondWithToken($token)
