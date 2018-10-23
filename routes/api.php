@@ -65,6 +65,8 @@ $api->version('v1', [
             // 图片资源
             $api->post('images', 'ImagesController@store')
                 ->name('api.images.store');
+            $api->post('topics', 'TopicsController@store')
+                ->name('api.topics.store');
         });
     });
 
