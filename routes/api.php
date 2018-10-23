@@ -42,6 +42,10 @@ $api->version('v1', [
         $api->post('authorizations', 'AuthorizationsController@store')
             ->name('api.authorizations.store');
 
+        // 分类列表
+        $api->get('categories','CategoriesController@index')
+            ->name('api.categories.index');
+
         // 需要 token 验证的接口
         // 刷新token
         $api->put('authorizations/current', 'AuthorizationsController@update')
