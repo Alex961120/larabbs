@@ -26,7 +26,9 @@ class ReplyObserver
         $topic->increment('reply_count', 1);
 
         // 通知作者话题被回复了
-        $topic->user->notify(new TopicReplied($reply));
+        if (!$reply->user->isAuthorOf($topic)) {
+            $topic->user->notify(new TopicReplied($reply));
+        }
     }
 
     public function deleted(Reply $reply)
