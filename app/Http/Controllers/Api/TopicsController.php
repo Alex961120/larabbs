@@ -59,7 +59,7 @@ class TopicsController extends Controller
         return $this->response->paginator($topics, new TopicTransformer());
     }
 
-    public function userIndex(User $user, Request $request)
+    public function userIndex(User $user)
     {
         $topics = $user->topics()->recent()
             ->paginate(20);
