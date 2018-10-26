@@ -28,7 +28,7 @@ class ReplysTableSeeder extends Seeder
                 $reply->user_id = $faker->randomElement($user_ids);
 
                 // 话题 ID，同上
-                $reply->topic_id = 1;
+                $reply->topic_id = $faker->randomElement($topic_ids);
             });
 
         // 将数据集合转换为数组，并插入到数据库中
