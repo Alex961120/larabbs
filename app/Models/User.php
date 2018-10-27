@@ -35,7 +35,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name', 'phone', 'email', 'password', 'avatar', 'introduction',
-        'weixin_openid', 'weixin_unionid'
+        'weixin_openid', 'weixin_unionid', 'registration_id'
     ];
 
     /**
@@ -66,7 +66,7 @@ class User extends Authenticatable implements JWTSubject
             // 拼接完整的 URL
             $path = config('app.url') . "/uploads/images/avatar/$path";
         }
-        
+
         $this->attributes['avatar'] = $path;
     }
 
